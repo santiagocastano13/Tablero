@@ -1,12 +1,31 @@
-import React from 'react';
+import { tasksContext } from '../Context/Context';
 import './ItemTask.css';
+import { useContext, useState } from "react";
 
-export const ItemTask = ({ taskName, description }) => {
+
+export const ItemTask = ({ taskId, taskName, description, taskDone }) => {
+
+  const context = useContext(tasksContext)
+  const [done, setDone] = useState(taskDone);
+
+  const handleCheckbox = () => {
+    setDone(!done);
+    context.setTasks(tasks =>
+      tasks.map(task =>
+        task.id === taskId ? { ...task, done: !task.done } : task
+      )
+    );
+  };
+  
   return (
-    <div className="task">
-      <div>
-        <li>{taskName} {description}</li>
+    <li key={taskId}>
+      <div className={`circle ${done ? 'green' : 'red'}`}></div>
+      <div className={`task ${done ? 'completed' : ''}`}>
+        <h3>{taskName}</h3>
+        <p>{description}</p>
       </div>
-    </div>
+      <input className="check" type="checkbox" checked={done} onChange={handleCheckbox} />
+
+  </li>
   );
 };

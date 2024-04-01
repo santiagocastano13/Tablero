@@ -5,23 +5,26 @@ import { tasksContext } from '../Context/Context';
 
 
 export const Filter = () => {
-  const filterContext = useContext(tasksContext);
-  const [filterType, setFilterType] = useState('');
+  const context = useContext(tasksContext);
 
   const handleFilterChange = (event) => {
-    setFilterType(event.target.value);
-  };
+    let filterType = event.target.value;
+    if (filterType === 'Pendientes') {
+      context.setFilteredTasks(context.tasks.filter(task => !task.done));
+    }else if (filterType === 'Resueltas') {
+      context.setFilteredTasks(context.tasks.filter(task => task.done));
+    }else{
+      context.setFilteredTasks(context.tasks);
+    }
 
-  const filteredTasks = filterType === '' ? filterContext.tasks :
-  filterType === 'Pendientes' ? filterContext.tasks.filter(task => !task.done) :
-  filterType === 'Resueltas' ? filterContext.tasks.filter(task => task.done) :
-  contextList.tasks;
+
+  }
 
   return (
     <>
       <div id='filter'>
         <h3 id='filterTitle'>Filtrar: </h3>
-        <select name="Filter" id="Filter" onChange={handleFilterChange}>
+        <select onChange={handleFilterChange}>
           <option value="">Todas las tareas</option>
           <option value="Pendientes">Pendientes</option>
           <option value="Resueltas">Resueltas</option>

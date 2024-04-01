@@ -1,7 +1,7 @@
 import React from 'react'
-import './ResponseText.css'
+import './InfoText.css'
 
-export const ResponseText = ({result}) => {
+export const InfoText = ({result}) => {
   return (
     <>
     <h2 id='resp'>{result}</h2>
