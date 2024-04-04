@@ -8,18 +8,18 @@ export const TaskProvider = ({ children }) => {
   
     const [tasks, setTasks] = useState([{
       id: 1,
-      name: 'Task 1',
-      description: 'Description 1',
+      name: 'Tarea 1',
+      description: 'Descripcion Tarea 1',
       done: false
     },{
       id: 2,
-      name: 'Task 2',
-      description: 'Description 2',
+      name: 'Tarea 2',
+      description: 'Descripcion Tarea 2',
       done: false
     },{
        id: 3,
-      name: 'Task 3',
-      description: 'Description 3',
+      name: 'Tarea 3',
+      description: 'Descripcion Tarea 3',
       done: false
     }]);
 

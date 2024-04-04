@@ -1,11 +1,11 @@
 import React, { useContext, useEffect } from 'react'
-import './Home.css'
 import { EnterField } from "../../EnterField/EnterField";
 import { Filter } from "../../Filter/Filter";
 import { Tasks } from "../../Tasks/Tasks";
 import { InfoText } from "../../InfoText/InfoText";
 import { tasksContext } from '../../Context/Context';
 import { ItemTask } from '../../ItemTask/ItemTask';
+import './Home.css'
 
 
 
@@ -17,7 +17,7 @@ export const Home = () => {
     <>
     <div id='home'>
       <EnterField/>
-      <InfoText result={`Usted tiene ${context.tasksPending} tareas pendientes y ${context.tasksResolved} tareas completadas`} />
+      <InfoText result={`Usted tiene ${context.tasksResolved} tareas completadas y ${context.tasksPending} tareas pendientes`} />
       <hr />
       <Filter />
       <Tasks>
